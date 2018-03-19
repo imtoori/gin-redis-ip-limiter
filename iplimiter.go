@@ -1,4 +1,4 @@
-package middlewares
+package iplimiter
 
 import (
 	"fmt"
@@ -9,15 +9,11 @@ import (
 	"github.com/go-redis/redis"
 )
 
-func CreateRateLimiterMiddleware(redisClient *redis.Client, key *string, limit int, slidingWindowNanoseconds int64) gin.HandlerFunc {
+func CreateRateLimiterMiddleware(redisClient *redis.Client, key string, limit int, slidingWindowNanoseconds int64) gin.HandlerFunc {
 
 	_, err := redisClient.Ping().Result()
 	if err != nil {
 		panic(fmt.Sprint("error init redis", err.Error()))
-	}
-
-	if key == nil {
-		*key = ""
 	}
 
 	return func(c *gin.Context) {
