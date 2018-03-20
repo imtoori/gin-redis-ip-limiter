@@ -7,6 +7,12 @@ It's inspired by this article https://engagor.github.io/blog/2017/05/02/sliding-
 
 It uses this golang redis library https://github.com/go-redis/redis.
 
+## Install
+
+Just run 
+
+`go get -u github.com/Salvatore-Giordano/gin-redis-ip-limiter/`
+
 ## Example
 
 ```go
