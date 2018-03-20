@@ -7,7 +7,7 @@ It's inspired by this article https://engagor.github.io/blog/2017/05/02/sliding-
 
 It uses this golang redis library https://github.com/go-redis/redis.
 
-## Install
+## Installation
 
 Just run 
 
