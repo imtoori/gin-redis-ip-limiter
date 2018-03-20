@@ -1,7 +1,11 @@
-# gin-redis-ip-limiter
+## Description
 
 It works with redis. It's pluggable and all you need is a redis client for every limiter.
 It limits path access based on client ip-address.
+
+It's inspired by this article https://engagor.github.io/blog/2017/05/02/sliding-window-rate-limiter-redis/.
+
+It uses this golang redis library https://github.com/go-redis/redis.
 
 ## Example
 
