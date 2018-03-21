@@ -38,5 +38,5 @@ func main() {
 
 **Limit**: number of request to accept.
 
-**SlidingWindowNanoseconds**: duration in nanosecond of the sliding window to consider.
+**SlidingWindow**: duration of the sliding window to consider.
 
