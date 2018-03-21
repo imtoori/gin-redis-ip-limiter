@@ -9,7 +9,7 @@ import (
 	"github.com/go-redis/redis"
 )
 
-func CreateRateLimiterMiddleware(redisClient *redis.Client, key string, limit int, slidingWindowNanoseconds int64) gin.HandlerFunc {
+func CreateRateLimiterMiddleware(redisClient *redis.Client, key string, limit int, slidingWindow time.Duration) gin.HandlerFunc {
 
 	_, err := redisClient.Ping().Result()
 	if err != nil {
@@ -22,7 +22,7 @@ func CreateRateLimiterMiddleware(redisClient *redis.Client, key string, limit in
 
 		redisClient.ZRemRangeByScore(userCntKey,
 			"0",
-			fmt.Sprint(now-(slidingWindowNanoseconds))).Result()
+			fmt.Sprint(now-(slidingWindow.Nanoseconds()))).Result()
 
 		reqs, _ := redisClient.ZRange(userCntKey, 0, -1).Result()
 
@@ -36,7 +36,7 @@ func CreateRateLimiterMiddleware(redisClient *redis.Client, key string, limit in
 
 		c.Next()
 		redisClient.ZAddNX(userCntKey, redis.Z{Score: float64(now), Member: float64(now)})
-		redisClient.Expire(userCntKey, time.Duration(slidingWindowNanoseconds)*time.Second)
+		redisClient.Expire(userCntKey, slidingWindow)
 	}
 
 }
