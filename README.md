@@ -29,7 +29,7 @@ func main() {
 		Addr:     "localhost:6379",
 		Password: "",
 		DB:       1,
-	}), "general", 200, 60*time.Second.Nanoseconds()))
+	}), "general", 200, 60*time.Second))
   // ...
   r.Run(":8080")
 }
