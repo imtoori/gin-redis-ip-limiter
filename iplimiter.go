@@ -9,7 +9,7 @@ import (
 	"github.com/go-redis/redis"
 )
 
-func CreateRateLimiterMiddleware(redisClient *redis.Client, key string, limit int, slidingWindow time.Duration) gin.HandlerFunc {
+func NewRateLimiterMiddleware(redisClient *redis.Client, key string, limit int, slidingWindow time.Duration) gin.HandlerFunc {
 
 	_, err := redisClient.Ping().Result()
 	if err != nil {
