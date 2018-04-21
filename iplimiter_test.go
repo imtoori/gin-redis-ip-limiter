@@ -11,7 +11,7 @@ import (
 func TestIpLimiter(t *testing.T) {
 	r := gin.Default()
 
-	r.Use(CreateRateLimiterMiddleware(redis.NewClient(
+	r.Use(NewRateLimiterMiddleware(redis.NewClient(
 		&redis.Options{
 			DB:       0,
 			Password: "",
