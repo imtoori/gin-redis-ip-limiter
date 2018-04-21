@@ -25,7 +25,7 @@ import (
 
 func main() {
   r := gin.Default()
-  r.Use(iplimiter.CreateRateLimiterMiddleware(redis.NewClient(&redis.Options{
+  r.Use(iplimiter.NewRateLimiterMiddleware(redis.NewClient(&redis.Options{
 		Addr:     "localhost:6379",
 		Password: "",
 		DB:       1,
